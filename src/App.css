@@ -153,6 +153,29 @@ img { max-width: 100%; display: block; }
   display: flex;
   list-style: none;
   gap: 2rem;
+  align-items: center;
+}
+.nav-resume-item {
+  margin-left: 0.5rem;
+}
+.nav-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-pill);
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+.nav-resume-btn:hover {
+  background: var(--gradient);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
 }
 .nav-link {
   font-size: 0.9rem;
@@ -335,6 +358,18 @@ img { max-width: 100%; display: block; }
 .btn--primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+}
+.btn--secondary {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--accent-light);
+  border: 1.5px solid rgba(139, 92, 246, 0.4);
+}
+.btn--secondary:hover {
+  background: rgba(139, 92, 246, 0.3);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.25);
+  color: #fff;
 }
 .btn--outline {
   background: transparent;
@@ -1035,9 +1070,297 @@ img { max-width: 100%; display: block; }
   margin: 0 auto;
 }
 
+/* About Resume Banner */
+.about-resume-banner {
+  margin-top: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  transition: all var(--transition);
+}
+.about-resume-banner:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+}
+.about-resume-info {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.about-resume-icon {
+  font-size: 2.2rem;
+}
+.about-resume-title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.about-resume-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Contact actions and copy item */
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.contact-link-item--copy {
+  cursor: pointer;
+  position: relative;
+  justify-content: space-between;
+}
+.copy-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: var(--radius-pill);
+  color: var(--accent-light);
+  font-weight: 600;
+  margin-left: auto;
+}
+
 /* ══════════════════════════════════════
-   FOOTER
+   SAY HELLO MODAL
    ══════════════════════════════════════ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10002;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: modalFadeIn 0.25s ease-out;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-card {
+  background: #12121a;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(139, 92, 246, 0.15);
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.4) transparent;
+}
+.modal-card::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-card::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.4);
+  border-radius: 10px;
+}
+@keyframes modalSlideUp {
+  from { transform: translateY(30px) scale(0.96); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+.modal-subtitle {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-top: 0.2rem;
+}
+.modal-close {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.modal-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+.modal-method-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+  text-align: left;
+}
+.modal-method-btn:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+  transform: translateX(4px);
+}
+.modal-method-btn--gmail {
+  border-color: rgba(234, 67, 53, 0.3);
+  background: rgba(234, 67, 53, 0.05);
+}
+.modal-method-btn--gmail:hover {
+  border-color: rgba(234, 67, 53, 0.6);
+  background: rgba(234, 67, 53, 0.1);
+}
+.modal-method-btn--copy {
+  border-color: rgba(139, 92, 246, 0.3);
+  background: rgba(139, 92, 246, 0.05);
+}
+.modal-method-btn--copy:hover {
+  border-color: rgba(139, 92, 246, 0.6);
+  background: rgba(139, 92, 246, 0.1);
+}
+.modal-method-btn--wa {
+  border-color: rgba(37, 211, 102, 0.3);
+  background: rgba(37, 211, 102, 0.05);
+}
+.modal-method-btn--wa:hover {
+  border-color: rgba(37, 211, 102, 0.6);
+  background: rgba(37, 211, 102, 0.1);
+}
+
+.method-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.method-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.method-info strong {
+  color: #fff;
+  font-size: 0.95rem;
+}
+.method-info span {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.method-arrow {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  transition: transform 0.2s;
+}
+.modal-method-btn:hover .method-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+.method-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+}
+
+/* Modal quick form */
+.modal-quick-form {
+  border-top: 1px solid var(--border);
+  padding-top: 1.2rem;
+}
+.quick-form-title {
+  color: #fff;
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+.quick-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.modal-input,
+.modal-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  outline: none;
+}
+.modal-input:focus,
+.modal-textarea:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.06);
+}
+.modal-textarea {
+  resize: vertical;
+  margin-bottom: 0.8rem;
+}
+.modal-submit-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .about-resume-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-resume-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  .quick-form-row {
+    grid-template-columns: 1fr;
+  }
+  .nav-resume-item {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
 .footer {
   border-top: 1px solid var(--border);
   padding: 2.5rem 2rem;

@@ -109,6 +109,45 @@ function App() {
   const heroRef = useRef<HTMLDivElement>(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const [sayHelloOpen, setSayHelloOpen] = useState(false)
+  const [copiedEmail, setCopiedEmail] = useState(false)
+  const [quickForm, setQuickForm] = useState({ name: '', email: '', message: '' })
+
+  const copyToClipboard = async (text: string) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text)
+      } else {
+        throw new Error('Clipboard not accessible')
+      }
+    } catch {
+      const ta = document.createElement('textarea')
+      ta.value = text
+      ta.style.position = 'fixed'
+      ta.style.opacity = '0'
+      document.body.appendChild(ta)
+      ta.focus()
+      ta.select()
+      try {
+        document.execCommand('copy')
+      } catch (err) {
+        console.warn('Fallback copy error:', err)
+      }
+      document.body.removeChild(ta)
+    }
+    setCopiedEmail(true)
+    setTimeout(() => setCopiedEmail(false), 2500)
+  }
+
+  const handleQuickSend = (e: React.FormEvent) => {
+    e.preventDefault()
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${quickForm.name || 'Visitor'}`)
+    const body = encodeURIComponent(
+      `Hello Ahad,\n\n${quickForm.message}\n\nFrom: ${quickForm.name || 'Anonymous'} (${quickForm.email || 'No email provided'})`
+    )
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=ahadahmedchoudhary786@gmail.com&su=${subject}&body=${body}`
+    window.open(gmailUrl, '_blank', 'noopener,noreferrer')
+  }
 
   /* ── Custom cursor ── */
   const handleMouseMove = useCallback((e: MouseEvent) => {
@@ -533,6 +572,18 @@ function App() {
               </a>
             </li>
           ))}
+          <li className="nav-resume-item">
+            <a
+              href="/Ahad_Ahmed_Choudhary_Resume.pdf"
+              download="Ahad_Ahmed_Choudhary_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-resume-btn"
+              onClick={() => setMenuOpen(false)}
+            >
+              Resume 📄
+            </a>
+          </li>
         </ul>
 
         <button className={`hamburger ${menuOpen ? 'hamburger--active' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
@@ -563,7 +614,22 @@ function App() {
           </p>
           <div className="hero-cta">
             <a href="#projects" className="btn btn--primary">View Projects</a>
-            <a href="#contact" className="btn btn--outline">Get In Touch</a>
+            <a
+              href="/Ahad_Ahmed_Choudhary_Resume.pdf"
+              download="Ahad_Ahmed_Choudhary_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--secondary"
+            >
+              Download Resume 📥
+            </a>
+            <button
+              onClick={() => setSayHelloOpen(true)}
+              className="btn btn--outline"
+              type="button"
+            >
+              Say Hello 👋
+            </button>
           </div>
         </div>
 
@@ -618,6 +684,25 @@ function App() {
               <span className="stat-number">3+</span>
               <span className="stat-label">ML Models</span>
             </div>
+          </div>
+
+          <div className="about-resume-banner">
+            <div className="about-resume-info">
+              <span className="about-resume-icon">📄</span>
+              <div>
+                <h4 className="about-resume-title">Curriculum Vitae / Resume</h4>
+                <p className="about-resume-desc">Comprehensive details of coursework, model evaluations, and achievements.</p>
+              </div>
+            </div>
+            <a
+              href="/Ahad_Ahmed_Choudhary_Resume.pdf"
+              download="Ahad_Ahmed_Choudhary_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--primary"
+            >
+              Download Resume (PDF) 📥
+            </a>
           </div>
         </div>
 
@@ -769,13 +854,18 @@ function App() {
               Whether you have a question or just want to say hi, my inbox is always open!
             </p>
             <div className="contact-links">
-              <a href="mailto:ahadahmedchoudhary786@gmail.com" className="contact-link-item">
+              <div
+                className="contact-link-item contact-link-item--copy"
+                onClick={() => copyToClipboard('ahadahmedchoudhary786@gmail.com')}
+                title="Click to copy email address"
+              >
                 <span className="contact-icon">✉️</span>
                 <span className="contact-detail">
-                  <span className="contact-label">Email</span>
+                  <span className="contact-label">Email {copiedEmail ? '— Copied! ✓' : '(Click to copy)'}</span>
                   <span className="contact-value">ahadahmedchoudhary786@gmail.com</span>
                 </span>
-              </a>
+                <span className="copy-badge">{copiedEmail ? 'Copied! ✓' : 'Copy'}</span>
+              </div>
               <a href="tel:+916264382228" className="contact-link-item">
                 <span className="contact-icon">📱</span>
                 <span className="contact-detail">
@@ -798,10 +888,145 @@ function App() {
                 </span>
               </div>
             </div>
-            <a href="mailto:ahadahmedchoudhary786@gmail.com" className="btn btn--primary btn--lg contact-btn">Say Hello 👋</a>
+
+            <div className="contact-actions">
+              <button
+                type="button"
+                onClick={() => setSayHelloOpen(true)}
+                className="btn btn--primary btn--lg contact-btn"
+              >
+                Say Hello 👋
+              </button>
+              <a
+                href="/Ahad_Ahmed_Choudhary_Resume.pdf"
+                download="Ahad_Ahmed_Choudhary_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--secondary btn--lg"
+              >
+                Download Resume 📥
+              </a>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* ── SAY HELLO MODAL ── */}
+      {sayHelloOpen && (
+        <div className="modal-backdrop" onClick={() => setSayHelloOpen(false)}>
+          <div className="modal-card" onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <div>
+                <h3 className="modal-title">Let's Connect! 👋</h3>
+                <p className="modal-subtitle">Choose your preferred way to say hello</p>
+              </div>
+              <button
+                type="button"
+                className="modal-close"
+                onClick={() => setSayHelloOpen(false)}
+                aria-label="Close modal"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="modal-methods">
+              {/* Option 1: Gmail Web (works 100% in any browser) */}
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=ahadahmedchoudhary786@gmail.com&su=Hello%20Ahad!%20(From%20Portfolio)&body=Hi%20Ahad,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20wanted%20to%20connect%20with%20you."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="modal-method-btn modal-method-btn--gmail"
+              >
+                <span className="method-icon">📧</span>
+                <div className="method-info">
+                  <strong>Open in Gmail (Web)</strong>
+                  <span>Direct browser compose — no app needed</span>
+                </div>
+                <span className="method-arrow">→</span>
+              </a>
+
+              {/* Option 2: Copy Email */}
+              <button
+                type="button"
+                onClick={() => copyToClipboard('ahadahmedchoudhary786@gmail.com')}
+                className="modal-method-btn modal-method-btn--copy"
+              >
+                <span className="method-icon">📋</span>
+                <div className="method-info">
+                  <strong>{copiedEmail ? 'Email Copied! ✓' : 'Copy Email Address'}</strong>
+                  <span>ahadahmedchoudhary786@gmail.com</span>
+                </div>
+                <span className="method-badge">{copiedEmail ? 'Copied!' : 'Copy'}</span>
+              </button>
+
+              {/* Option 3: Default Mail App */}
+              <a
+                href="mailto:ahadahmedchoudhary786@gmail.com?subject=Hello%20Ahad!%20(From%20Portfolio)"
+                className="modal-method-btn modal-method-btn--app"
+              >
+                <span className="method-icon">✉️</span>
+                <div className="method-info">
+                  <strong>Open Default Mail App</strong>
+                  <span>Outlook, Apple Mail, Thunderbird</span>
+                </div>
+                <span className="method-arrow">→</span>
+              </a>
+
+              {/* Option 4: WhatsApp */}
+              <a
+                href="https://wa.me/916264382228?text=Hi%20Ahad,%20I%20saw%20your%20portfolio!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="modal-method-btn modal-method-btn--wa"
+              >
+                <span className="method-icon">💬</span>
+                <div className="method-info">
+                  <strong>Chat on WhatsApp</strong>
+                  <span>+91 6264382228</span>
+                </div>
+                <span className="method-arrow">→</span>
+              </a>
+            </div>
+
+            {/* Quick message form */}
+            <div className="modal-quick-form">
+              <h4 className="quick-form-title">Or write a quick message:</h4>
+              <form onSubmit={handleQuickSend}>
+                <div className="quick-form-row">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    value={quickForm.name}
+                    onChange={e => setQuickForm({ ...quickForm, name: e.target.value })}
+                    className="modal-input"
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    value={quickForm.email}
+                    onChange={e => setQuickForm({ ...quickForm, email: e.target.value })}
+                    className="modal-input"
+                    required
+                  />
+                </div>
+                <textarea
+                  placeholder="Your Message..."
+                  rows={3}
+                  value={quickForm.message}
+                  onChange={e => setQuickForm({ ...quickForm, message: e.target.value })}
+                  className="modal-textarea"
+                  required
+                />
+                <button type="submit" className="btn btn--primary modal-submit-btn">
+                  Send via Email →
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── FOOTER ── */}
       <footer className="footer">
