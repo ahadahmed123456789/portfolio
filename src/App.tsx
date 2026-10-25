@@ -113,14 +113,8 @@ function App() {
   const [copiedEmail, setCopiedEmail] = useState(false)
   const [quickForm, setQuickForm] = useState({ name: '', email: '', message: '' })
 
-  const copyToClipboard = async (text: string) => {
+  const fallbackCopy = (text: string) => {
     try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text)
-      } else {
-        throw new Error('Clipboard not accessible')
-      }
-    } catch {
       const ta = document.createElement('textarea')
       ta.value = text
       ta.style.position = 'fixed'
@@ -128,15 +122,22 @@ function App() {
       document.body.appendChild(ta)
       ta.focus()
       ta.select()
-      try {
-        document.execCommand('copy')
-      } catch (err) {
-        console.warn('Fallback copy error:', err)
-      }
+      document.execCommand('copy')
       document.body.removeChild(ta)
+    } catch (err) {
+      console.warn('Fallback copy error:', err)
     }
+  }
+
+  const copyToClipboard = (text: string) => {
     setCopiedEmail(true)
     setTimeout(() => setCopiedEmail(false), 2500)
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).catch(() => fallbackCopy(text))
+    } else {
+      fallbackCopy(text)
+    }
   }
 
   const handleQuickSend = (e: React.FormEvent) => {
