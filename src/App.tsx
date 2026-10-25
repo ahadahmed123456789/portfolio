@@ -544,7 +544,7 @@ function App() {
   }, [])
 
   return (
-    <div ref={containerRef} className="portfolio-root">
+    <div ref={containerRef} className={`portfolio-root ${sayHelloOpen ? 'modal-open-state' : ''}`}>
       {/* ── CUSTOM CURSOR ── */}
       <div ref={cursorRef} className="custom-cursor" />
       <div ref={cursorDotRef} className="custom-cursor-dot" />
@@ -850,51 +850,136 @@ function App() {
         </div>
         <div className="section-body">
           <div className="contact-card">
+            <div className="contact-badge">
+              <span className="contact-badge-dot" />
+              <span>Available for Full-time Roles &amp; Internships</span>
+            </div>
+
+            <h3 className="contact-headline">Let's build something data-driven together.</h3>
+
             <p className="contact-intro">
-              I'm currently looking for entry-level <strong>Data Science</strong> or <strong>ML Engineer</strong> opportunities.
-              Whether you have a question or just want to say hi, my inbox is always open!
+              I'm actively seeking entry-level <strong>Data Science</strong> or <strong>ML Engineer</strong> opportunities.
+              Whether you have an opening, a question, or a project in mind, my inbox is always open!
             </p>
-            <div className="contact-links">
-              <div
-                className="contact-link-item contact-link-item--copy"
-                onClick={() => copyToClipboard('ahadahmedchoudhary786@gmail.com')}
-                title="Click to copy email address"
-              >
-                <span className="contact-icon">✉️</span>
-                <span className="contact-detail">
-                  <span className="contact-label">Email {copiedEmail ? '— Copied! ✓' : '(Click to copy)'}</span>
-                  <span className="contact-value">ahadahmedchoudhary786@gmail.com</span>
-                </span>
-                <span className="copy-badge">{copiedEmail ? 'Copied! ✓' : 'Copy'}</span>
+
+            <div className="contact-grid">
+              {/* Card 1: Email (Featured) */}
+              <div className="contact-item contact-item--featured">
+                <div className="contact-item-left">
+                  <div className="contact-icon-wrapper">
+                    <span>✉️</span>
+                  </div>
+                  <div className="contact-item-info">
+                    <span className="contact-item-label">Direct Email</span>
+                    <a
+                      href="mailto:ahadahmedchoudhary786@gmail.com"
+                      className="contact-item-value contact-item-value--email"
+                      title="Send email"
+                    >
+                      ahadahmedchoudhary786@gmail.com
+                    </a>
+                  </div>
+                </div>
+                <div className="contact-item-actions">
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard('ahadahmedchoudhary786@gmail.com')}
+                    className={`contact-action-btn ${copiedEmail ? 'contact-action-btn--copied' : ''}`}
+                    title="Copy email to clipboard"
+                  >
+                    <span>{copiedEmail ? '✓ Copied!' : '📋 Copy'}</span>
+                  </button>
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=ahadahmedchoudhary786@gmail.com&su=Hello%20Ahad!%20(From%20Portfolio)&body=Hi%20Ahad,%0D%0A%0D%0AI%20came%20across%20your%20portfolio..."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-action-btn contact-action-btn--gmail"
+                    title="Open in Gmail Web"
+                  >
+                    <span>Gmail ↗</span>
+                  </a>
+                </div>
               </div>
-              <a href="tel:+916264382228" className="contact-link-item">
-                <span className="contact-icon">📱</span>
-                <span className="contact-detail">
-                  <span className="contact-label">Phone</span>
-                  <span className="contact-value">+91 6264382228</span>
-                </span>
-              </a>
-              <a href="https://www.linkedin.com/in/ahad-ahmed-choudhary-738b3135a" target="_blank" rel="noopener noreferrer" className="contact-link-item">
-                <span className="contact-icon">🔗</span>
-                <span className="contact-detail">
-                  <span className="contact-label">LinkedIn</span>
-                  <span className="contact-value">ahad-ahmed-choudhary</span>
-                </span>
-              </a>
-              <div className="contact-link-item contact-link-item--location">
-                <span className="contact-icon">📍</span>
-                <span className="contact-detail">
-                  <span className="contact-label">Location</span>
-                  <span className="contact-value">Indore, Madhya Pradesh</span>
-                </span>
+
+              {/* Card 2: Phone & WhatsApp */}
+              <div className="contact-item">
+                <div className="contact-item-left">
+                  <div className="contact-icon-wrapper">
+                    <span>📱</span>
+                  </div>
+                  <div className="contact-item-info">
+                    <span className="contact-item-label">Phone &amp; WhatsApp</span>
+                    <a href="tel:+916264382228" className="contact-item-value">
+                      +91 6264382228
+                    </a>
+                  </div>
+                </div>
+                <div className="contact-item-actions">
+                  <a
+                    href="https://wa.me/916264382228?text=Hi%20Ahad,%20I%20saw%20your%20portfolio!"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-action-btn"
+                    title="Chat on WhatsApp"
+                  >
+                    <span>WhatsApp 💬</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Card 3: LinkedIn */}
+              <div className="contact-item">
+                <div className="contact-item-left">
+                  <div className="contact-icon-wrapper">
+                    <span>🔗</span>
+                  </div>
+                  <div className="contact-item-info">
+                    <span className="contact-item-label">LinkedIn Profile</span>
+                    <a
+                      href="https://www.linkedin.com/in/ahad-ahmed-choudhary-738b3135a"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="contact-item-value"
+                    >
+                      ahad-ahmed-choudhary
+                    </a>
+                  </div>
+                </div>
+                <div className="contact-item-actions">
+                  <a
+                    href="https://www.linkedin.com/in/ahad-ahmed-choudhary-738b3135a"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-action-btn"
+                    title="View LinkedIn Profile"
+                  >
+                    <span>Connect ↗</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Card 4: Location */}
+              <div className="contact-item">
+                <div className="contact-item-left">
+                  <div className="contact-icon-wrapper">
+                    <span>📍</span>
+                  </div>
+                  <div className="contact-item-info">
+                    <span className="contact-item-label">Location</span>
+                    <span className="contact-item-value">Indore, Madhya Pradesh</span>
+                  </div>
+                </div>
+                <div className="contact-item-actions">
+                  <span className="contact-status-tag">Open to Relocate</span>
+                </div>
               </div>
             </div>
 
-            <div className="contact-actions">
+            <div className="contact-footer-actions">
               <button
                 type="button"
                 onClick={() => setSayHelloOpen(true)}
-                className="btn btn--primary btn--lg contact-btn"
+                className="btn btn--primary btn--lg"
               >
                 Say Hello 👋
               </button>
