@@ -84,10 +84,10 @@ const CERTIFICATIONS = [
 ]
 
 const ACHIEVEMENTS = [
-  'Completed 6+ ML/Data Science projects with focus on NLP, regression analysis, and predictive modeling',
-  'Completed multiple Kaggle mini-projects on visualization and predictive modeling',
-  'Built interactive ML web applications using Streamlit with real-time prediction capabilities',
-  'Trained and evaluated 3 ML models using GridSearchCV hyperparameter tuning',
+  'Completed 6+ Data Analytics & Data Science projects with focus on NLP, regression analysis, and predictive modeling',
+  'Completed multiple Kaggle mini-projects on exploratory data analysis, visualization, and predictive modeling',
+  'Built interactive data & ML web applications using Streamlit with real-time prediction capabilities',
+  'Trained and evaluated 3 predictive models using GridSearchCV hyperparameter tuning',
 ]
 
 const SOFT_SKILLS = [
@@ -614,13 +614,13 @@ function App() {
           <p className="hero-greeting">Hello, I'm</p>
           <h1 className="hero-name">AHAD AHMED CHOUDHARY</h1>
           <p className="hero-title">
-            <span className="title-highlight">Data Scientist</span>{' '}
+            <span className="title-highlight">Data Analyst</span>{' '}
             <span className="title-sep">&</span>{' '}
-            <span className="title-highlight">ML Engineer</span>
+            <span className="title-highlight">Data Scientist</span>
           </p>
           <p className="hero-description">
-            Transforming raw data into actionable insights through Python, ML &amp; visualization.
-            Passionate about building intelligent systems that drive data-driven decisions.
+            Transforming raw data into actionable insights through Python, SQL &amp; visualization.
+            Passionate about uncovering trends, exploratory data analysis, and building predictive models that drive decisions.
           </p>
           <div className="hero-cta">
             <a href="#projects" className="btn btn--primary">View Projects</a>
@@ -670,17 +670,17 @@ function App() {
         </div>
         <div className="section-body">
           <p className="about-text">
-            Data Science enthusiast skilled in <strong>Python</strong>, <strong>SQL</strong>, and <strong>Machine Learning</strong>.
-            Experienced in data preprocessing, visualization, and predictive modeling using Pandas, NumPy,
+            Data Science &amp; Analytics enthusiast skilled in <strong>Python</strong>, <strong>SQL</strong>, and <strong>Machine Learning</strong>.
+            Experienced in data preprocessing, exploratory data analysis (EDA), visualization, and predictive modeling using Pandas, NumPy,
             Scikit-learn, and Matplotlib. Capable of transforming raw data into actionable insights to support
             data-driven decisions. Currently pursuing <strong>B.Tech in Computer Science</strong> (Specialization in Data Science)
-            and seeking an entry-level Data Science or ML Engineer position.
+            and seeking an entry-level Data Analyst or Data Scientist position.
           </p>
 
           <div className="about-stats">
             <div className="about-stat">
               <span className="stat-number">6+</span>
-              <span className="stat-label">ML Projects</span>
+              <span className="stat-label">Analytics &amp; DS Projects</span>
             </div>
             <div className="about-stat">
               <span className="stat-number">3</span>
@@ -688,11 +688,11 @@ function App() {
             </div>
             <div className="about-stat">
               <span className="stat-number">5+</span>
-              <span className="stat-label">Tools & Libraries</span>
+              <span className="stat-label">Tools &amp; Libraries</span>
             </div>
             <div className="about-stat">
               <span className="stat-number">3+</span>
-              <span className="stat-label">ML Models</span>
+              <span className="stat-label">Predictive Models</span>
             </div>
           </div>
 
@@ -867,7 +867,7 @@ function App() {
             <h3 className="contact-headline">Let's build something data-driven together.</h3>
 
             <p className="contact-intro">
-              I'm actively seeking entry-level <strong>Data Science</strong> or <strong>ML Engineer</strong> opportunities.
+              I'm actively seeking entry-level <strong>Data Analyst</strong> or <strong>Data Scientist</strong> opportunities.
               Whether you have an opening, a question, or a project in mind, my inbox is always open!
             </p>
 
