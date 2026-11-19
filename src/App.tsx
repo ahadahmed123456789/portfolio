@@ -19,27 +19,37 @@ if (typeof window !== 'undefined') {
 const SKILLS = [
   {
     category: 'Programming',
-    items: ['Python', 'C', 'C++'],
+    items: ['Python', 'SQL', 'R (basic)', 'C', 'C++'],
     icon: '⟨/⟩',
   },
   {
-    category: 'Machine Learning',
-    items: ['Scikit-learn', 'Regression', 'Classification', 'Clustering'],
-    icon: '🧠',
+    category: 'Data Analysis',
+    items: ['Pandas', 'NumPy', 'EDA', 'Data Cleaning', 'Data Validation', 'Feature Engineering'],
+    icon: '🔍',
   },
   {
-    category: 'Visualization',
-    items: ['Matplotlib', 'Seaborn', 'Plotly', 'Power BI'],
+    category: 'Statistics & Modeling',
+    items: ['Statistical Modelling', 'Regression', 'Classification', 'Clustering', 'Hypothesis Testing', 'A/B Testing Concepts'],
+    icon: '📐',
+  },
+  {
+    category: 'Forecasting',
+    items: ['Time-Series Analysis', 'ARIMA', 'Trend Modelling', 'Seasonal Decomposition'],
+    icon: '📈',
+  },
+  {
+    category: 'Visualization & BI',
+    items: ['Power BI', 'Plotly', 'Matplotlib', 'Seaborn', 'Streamlit', 'Tableau (learning)'],
     icon: '📊',
   },
   {
-    category: 'Database & Tools',
-    items: ['MySQL', 'PostgreSQL', 'MongoDB', 'Excel', 'Jupyter Notebook', 'Google Colab'],
+    category: 'Databases',
+    items: ['MySQL', 'PostgreSQL', 'SQLite', 'MongoDB'],
     icon: '🗄️',
   },
   {
-    category: 'Other',
-    items: ['EDA', 'Feature Engineering', 'Model Evaluation', 'Data Cleaning'],
+    category: 'Tools & Automation',
+    items: ['Excel (Pivot & Power Query)', 'VBA Macros', 'Jupyter', 'Git', 'GitHub'],
     icon: '⚙️',
   },
 ]
@@ -47,55 +57,85 @@ const SKILLS = [
 const PROJECTS = [
   {
     title: 'AI Resume Analyser Pro',
-    techs: ['Python', 'Streamlit', 'NLP (spaCy)', 'PyMuPDF', 'SQLite', 'Plotly', 'ML'],
+    year: '2025',
+    metric: '60%+ Screening Time Saved',
+    techs: ['Python', 'Streamlit', 'spaCy', 'SQLite', 'Plotly', 'NLP'],
     bullets: [
-      'Multi-engine PDF parsing (PyMuPDF, pdfplumber, pdfminer) with NLP skill extraction',
-      'Weighted skill scoring, ATS compatibility checker, interactive dashboard with 6 charts',
-      'Course recommendation engine, Unicode normalization, fuzzy matching',
+      'Reduced resume screening time by 60%+ by building a multi-engine PDF parsing application (PyMuPDF, pdfplumber, pdfminer) with NLP-based skill extraction using spaCy.',
+      'Automated an end-to-end reporting workflow — parse, score, rank, recommend — replacing manual review with a Streamlit dashboard featuring 6 interactive Plotly charts for stakeholder decision-making.',
+      'Improved skill-extraction accuracy by implementing Unicode normalization and fuzzy matching to handle formatting variants, spacing inconsistencies, and synonym variations.',
+      'Built an ATS-compatibility checker that scores resumes against job descriptions using weighted skill matching and provides actionable gap analysis.',
     ],
     num: '01',
   },
   {
-    title: 'Sales Data Analysis',
-    techs: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Scikit-learn'],
+    title: 'Student Habits vs Academic Performance Analysis',
+    year: '2025',
+    metric: 'R² = 0.72 | 35% RMSE Drop',
+    techs: ['Python', 'Pandas', 'NumPy', 'scikit-learn', 'Seaborn'],
     bullets: [
-      'Cleaned and analyzed sales data to identify key business trends.',
-      'Built regression and classification models to predict sales outcomes using Scikit-learn.',
-      'Visualized insights with Seaborn and Matplotlib to enhance data-driven strategies.',
+      'Explained significant variance in academic performance (R² = 0.72) across 1,000 student records by engineering behavioral features and benchmarking Linear Regression, Decision Tree, and Random Forest models.',
+      'Reduced prediction error by 35% versus a mean-baseline benchmark (RMSE improvement) by selecting the best-performing model through GridSearchCV hyperparameter tuning.',
+      'Conducted hypothesis testing on behavioral variables to isolate statistically significant predictors (p < 0.05) and documented findings in a written analysis for non-technical review.',
+      'Cleaned and validated a 1,000-record dataset resolving missing values, duplicates, and type inconsistencies across multiple input formats with full transformation documentation.',
     ],
     num: '02',
   },
   {
-    title: 'Student Habits vs Academic Performance',
-    techs: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Scikit-learn', 'Jupyter'],
+    title: 'Sales Data Analysis & Forecasting',
+    year: '2025',
+    metric: '12% MAPE | RMSE 0.18',
+    techs: ['Python', 'Pandas', 'scikit-learn', 'Seaborn', 'Excel', 'Power BI'],
     bullets: [
-      'EDA on 1,000 records, data cleaning, visualization (histograms, heatmaps, scatter plots)',
-      'ML model comparison (Linear Regression, Decision Tree, Random Forest) via GridSearchCV',
-      'RMSE/R² evaluation, feature engineering, insights extraction',
+      'Identified 5+ revenue-driving trends across 12 months of sales transaction data by segmenting by category, region, and seasonality using Pandas and visualizing patterns in Seaborn.',
+      'Built regression models to predict sales outcomes with RMSE of 0.18 on held-out test data by engineering time-based and categorical features and validating across multiple model types.',
+      'Forecasted 4-week sales with 12% MAPE using time-series decomposition (trend + seasonality) and ARIMA modelling, measured against actual sales data for accuracy validation.',
+      'Delivered an Excel workbook with pivot summaries and VBA macro for refreshing reports, enabling non-technical stakeholders to re-cut analysis without code dependency.',
     ],
     num: '03',
   },
 ]
 
 const CERTIFICATIONS = [
-  { name: 'Python for Data Science', issuer: 'Tutedude' },
-  { name: 'SQL for Data Analysis', issuer: 'Coursera' },
-  { name: 'Machine Learning with Scikit-learn', issuer: 'Tutedude' },
+  { name: 'Python for Data Science', issuer: 'Tutedude', status: 'Completed', icon: '🐍' },
+  { name: 'SQL for Data Analysis', issuer: 'Coursera', status: 'Completed', icon: '🗄️' },
+  { name: 'Machine Learning with scikit-learn', issuer: 'Tutedude', status: 'Completed', icon: '🤖' },
+  { name: 'Power BI Essentials', issuer: 'Self-study', status: 'In Progress', icon: '📊' },
 ]
 
 const ACHIEVEMENTS = [
-  'Completed 6+ Data Analytics & Data Science projects with focus on NLP, regression analysis, and predictive modeling',
-  'Completed multiple Kaggle mini-projects on exploratory data analysis, visualization, and predictive modeling',
-  'Built interactive data & ML web applications using Streamlit with real-time prediction capabilities',
-  'Trained and evaluated 3 predictive models using GridSearchCV hyperparameter tuning',
+  'Reduced resume screening time by 60%+ through an automated NLP parsing & ranking pipeline with 6 interactive Plotly charts.',
+  'Explained academic performance variance (R² = 0.72) and achieved 35% error reduction (RMSE) using GridSearchCV tuning across 1,000 records.',
+  'Forecasted 4-week sales with 12% MAPE and 0.18 RMSE using time-series decomposition (trend + seasonality) and ARIMA.',
+  'Delivered interactive Excel models with Power Query summaries and VBA macros, empowering stakeholders with code-free self-service analytics.',
+  'Completed multiple Kaggle mini-projects on exploratory data analysis, visualization, and predictive modeling (linked via GitHub).',
 ]
 
 const SOFT_SKILLS = [
-  'Analytical Thinking',
+  'Analytical Rigour',
+  'Business Communication',
+  'Statistical Thinking',
+  'Stakeholder Reporting',
+  'Hypothesis Testing',
   'Problem Solving',
-  'Team Collaboration',
-  'Communication',
-  'Time Management',
+]
+
+const ADDITIONAL_INFO = [
+  {
+    icon: '🌐',
+    label: 'Languages',
+    value: 'English (Professional) • Hindi (Native)',
+  },
+  {
+    icon: '🚀',
+    label: 'Availability & Mobility',
+    value: 'Full-time Roles & Internships • Open to Relocation across India',
+  },
+  {
+    icon: '📊',
+    label: 'Kaggle & Portfolio',
+    value: 'Multiple mini-projects on visualization & predictive modelling (linked via GitHub)',
+  },
 ]
 
 const NAV_ITEMS = ['About', 'Skills', 'Projects', 'Education', 'Certifications', 'Contact']
@@ -575,8 +615,8 @@ function App() {
           ))}
           <li className="nav-resume-item">
             <a
-              href="/Ahad_Ahmed_Choudhary_Resume.pdf"
-              download="Ahad_Ahmed_Choudhary_Resume.pdf"
+              href="/Ahad_Ahmed_Choudhary_Data_Analyst_Resume.pdf"
+              download="Ahad_Ahmed_Choudhary_Data_Analyst_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="nav-resume-btn"
@@ -619,14 +659,13 @@ function App() {
             <span className="title-highlight">Data Scientist</span>
           </p>
           <p className="hero-description">
-            Transforming raw data into actionable insights through Python, SQL &amp; visualization.
-            Passionate about uncovering trends, exploratory data analysis, and building predictive models that drive decisions.
+            Transforming raw datasets into actionable insights, automated dashboards, and predictive models through Python, SQL, and Power BI. Driven by analytical rigour and clear business communication.
           </p>
           <div className="hero-cta">
             <a href="#projects" className="btn btn--primary">View Projects</a>
             <a
-              href="/Ahad_Ahmed_Choudhary_Resume.pdf"
-              download="Ahad_Ahmed_Choudhary_Resume.pdf"
+              href="/Ahad_Ahmed_Choudhary_Data_Analyst_Resume.pdf"
+              download="Ahad_Ahmed_Choudhary_Data_Analyst_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn--secondary"
@@ -656,7 +695,7 @@ function App() {
         <div className="marquee-track">
           {[...Array(2)].map((_, i) => (
             <span key={i} className="marquee-content">
-              PYTHON • MACHINE LEARNING • DATA SCIENCE • SQL • VISUALIZATION • PANDAS • SCIKIT-LEARN • POWER BI • NLP • DEEP LEARNING •&nbsp;
+              PYTHON • SQL • DATA ANALYTICS • DATA SCIENCE • POWER BI • TIME-SERIES FORECASTING • STATISTICAL MODELLING • PANDAS • SCIKIT-LEARN • EDA • TABLEAU • EXCEL POWER QUERY •&nbsp;
             </span>
           ))}
         </div>
@@ -670,29 +709,28 @@ function App() {
         </div>
         <div className="section-body">
           <p className="about-text">
-            Data Science &amp; Analytics enthusiast skilled in <strong>Python</strong>, <strong>SQL</strong>, and <strong>Machine Learning</strong>.
-            Experienced in data preprocessing, exploratory data analysis (EDA), visualization, and predictive modeling using Pandas, NumPy,
-            Scikit-learn, and Matplotlib. Capable of transforming raw data into actionable insights to support
-            data-driven decisions. Currently pursuing <strong>B.Tech in Computer Science</strong> (Specialization in Data Science)
-            and seeking an entry-level Data Analyst or Data Scientist position.
+            Data Science undergraduate with <strong>3 end-to-end analytics projects</strong> spanning forecasting, predictive modelling, and automated reporting.
+            Built a resume-analysis application that reduced screening time by <strong>60%+</strong> and a student performance model explaining variance through regression analysis across <strong>1,000 records</strong> (R² = 0.72).
+            Proficient in <strong>Python</strong>, <strong>SQL</strong>, statistical analysis, and <strong>Power BI</strong> with hands-on experience transforming raw datasets into dashboards and reports for non-technical stakeholders.
+            Seeking a <strong>Data Analyst</strong> or <strong>Data Scientist</strong> role where analytical rigour and clear business communication drive decisions.
           </p>
 
           <div className="about-stats">
             <div className="about-stat">
-              <span className="stat-number">6+</span>
-              <span className="stat-label">Analytics &amp; DS Projects</span>
-            </div>
-            <div className="about-stat">
               <span className="stat-number">3</span>
+              <span className="stat-label">End-to-End Projects</span>
+            </div>
+            <div className="about-stat">
+              <span className="stat-number">60%+</span>
+              <span className="stat-label">Screening Time Saved</span>
+            </div>
+            <div className="about-stat">
+              <span className="stat-number">12%</span>
+              <span className="stat-label">Forecast MAPE</span>
+            </div>
+            <div className="about-stat">
+              <span className="stat-number">4</span>
               <span className="stat-label">Certifications</span>
-            </div>
-            <div className="about-stat">
-              <span className="stat-number">5+</span>
-              <span className="stat-label">Tools &amp; Libraries</span>
-            </div>
-            <div className="about-stat">
-              <span className="stat-number">3+</span>
-              <span className="stat-label">Predictive Models</span>
             </div>
           </div>
 
@@ -701,18 +739,27 @@ function App() {
               <span className="about-resume-icon">📄</span>
               <div>
                 <h4 className="about-resume-title">Curriculum Vitae / Resume</h4>
-                <p className="about-resume-desc">Comprehensive details of coursework, model evaluations, and achievements.</p>
+                <p className="about-resume-desc">Updated Data Analyst &amp; Data Scientist resume with complete coursework, model evaluations, and metrics.</p>
               </div>
             </div>
-            <a
-              href="/Ahad_Ahmed_Choudhary_Resume.pdf"
-              download="Ahad_Ahmed_Choudhary_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn--primary"
-            >
-              Download Resume (PDF) 📥
-            </a>
+            <div className="about-resume-actions">
+              <a
+                href="/Ahad_Ahmed_Choudhary_Data_Analyst_Resume.pdf"
+                download="Ahad_Ahmed_Choudhary_Data_Analyst_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--primary"
+              >
+                Download PDF (109 KB) 📥
+              </a>
+              <a
+                href="/Ahad_Ahmed_Choudhary_Data_Analyst_Resume.doc"
+                download="Ahad_Ahmed_Choudhary_Data_Analyst_Resume.doc"
+                className="btn btn--secondary"
+              >
+                Download .DOC 📄
+              </a>
+            </div>
           </div>
         </div>
 
@@ -755,7 +802,13 @@ function App() {
             <div className="project-card" key={project.title}>
               <div className="project-num">{project.num}</div>
               <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
+                <div className="project-header-top">
+                  <h3 className="project-title">{project.title}</h3>
+                  <div className="project-meta-badges">
+                    <span className="project-year-badge">{project.year}</span>
+                    <span className="project-metric-badge">{project.metric}</span>
+                  </div>
+                </div>
                 <div className="project-techs">
                   {project.techs.map(t => (
                     <span key={t} className="tech-pill">{t}</span>
@@ -787,14 +840,13 @@ function App() {
             <div className="timeline-card">
               <div className="timeline-dot" />
               <div className="timeline-content">
-                <span className="timeline-date">Aug 2023 — June 2027</span>
-                <h3 className="timeline-title">Bachelor of Technology (B.Tech)</h3>
-                <p className="timeline-subtitle">Computer Science (Specialization in Data Science)</p>
+                <span className="timeline-date">Aug 2023 — Expected June 2027</span>
+                <h3 className="timeline-title">B.Tech, Computer Science (Data Science Specialization)</h3>
                 <p className="timeline-institution">Sushila Devi Bansal College of Engineering, Indore</p>
                 <span className="timeline-badge">CGPA: 6.5</span>
                 <div className="timeline-courses">
-                  <h4>Relevant Courses</h4>
-                  <p>Big Data, Data Science, Data Warehouse, ML, DL, DBMS, Probability &amp; Statistics, OOP</p>
+                  <h4>Relevant Coursework</h4>
+                  <p>Statistics &amp; Probability, Machine Learning, Deep Learning, Data Warehousing, Big Data Analytics, DBMS, Data Structures, OOP</p>
                 </div>
               </div>
             </div>
@@ -812,9 +864,12 @@ function App() {
           <div className="certs-grid">
             {CERTIFICATIONS.map((cert, i) => (
               <div className="cert-card" key={i}>
-                <div className="cert-icon">🏆</div>
+                <div className="cert-icon">{cert.icon}</div>
                 <h3 className="cert-name">{cert.name}</h3>
                 <p className="cert-issuer">{cert.issuer}</p>
+                <span className={`cert-badge ${cert.status === 'Completed' ? 'cert-badge--completed' : 'cert-badge--progress'}`}>
+                  {cert.status}
+                </span>
                 <div className="cert-shine" />
               </div>
             ))}
@@ -826,11 +881,11 @@ function App() {
       <section className="section section--dark" id="achievements">
         <div className="section-header">
           <span className="section-label">06</span>
-          <h2 className="section-heading">Achievements & Soft Skills</h2>
+          <h2 className="section-heading">Achievements &amp; Additional Information</h2>
         </div>
         <div className="section-body achievements-softskills">
           <div className="achievements-col">
-            <h3 className="subsection-title">Achievements</h3>
+            <h3 className="subsection-title">Key Achievements</h3>
             <div className="achievements-list">
               {ACHIEVEMENTS.map((a, i) => (
                 <div className="achievement-row" key={i}>
@@ -841,12 +896,27 @@ function App() {
             </div>
           </div>
           <div className="softskills-col">
-            <h3 className="subsection-title">Soft Skills</h3>
+            <h3 className="subsection-title">Core Strengths</h3>
             <div className="soft-pills">
               {SOFT_SKILLS.map(s => (
                 <span key={s} className="soft-pill">{s}</span>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Additional info cards: Languages, Availability, Kaggle */}
+        <div className="section-body">
+          <div className="additional-info-row">
+            {ADDITIONAL_INFO.map((info, idx) => (
+              <div className="additional-info-card" key={idx}>
+                <span className="additional-info-icon">{info.icon}</span>
+                <div>
+                  <div className="additional-info-title">{info.label}</div>
+                  <div className="additional-info-desc">{info.value}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -945,7 +1015,7 @@ function App() {
                   <div className="contact-item-info">
                     <span className="contact-item-label">LinkedIn Profile</span>
                     <a
-                      href="https://www.linkedin.com/in/ahad-ahmed-choudhary-738b3135a"
+                      href="https://linkedin.com/in/ahad-ahmed-choudhary-738b3135a"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="contact-item-value"
@@ -956,7 +1026,7 @@ function App() {
                 </div>
                 <div className="contact-item-actions">
                   <a
-                    href="https://www.linkedin.com/in/ahad-ahmed-choudhary-738b3135a"
+                    href="https://linkedin.com/in/ahad-ahmed-choudhary-738b3135a"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="contact-action-btn"
@@ -967,19 +1037,50 @@ function App() {
                 </div>
               </div>
 
-              {/* Card 4: Location */}
+              {/* Card 4: GitHub */}
+              <div className="contact-item">
+                <div className="contact-item-left">
+                  <div className="contact-icon-wrapper">
+                    <span>💻</span>
+                  </div>
+                  <div className="contact-item-info">
+                    <span className="contact-item-label">GitHub Profile</span>
+                    <a
+                      href="https://github.com/ahadahmed123456789"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="contact-item-value"
+                    >
+                      ahadahmed123456789
+                    </a>
+                  </div>
+                </div>
+                <div className="contact-item-actions">
+                  <a
+                    href="https://github.com/ahadahmed123456789"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-action-btn"
+                    title="View GitHub Profile"
+                  >
+                    <span>GitHub ↗</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Card 5: Location */}
               <div className="contact-item">
                 <div className="contact-item-left">
                   <div className="contact-icon-wrapper">
                     <span>📍</span>
                   </div>
                   <div className="contact-item-info">
-                    <span className="contact-item-label">Location</span>
-                    <span className="contact-item-value">Indore, Madhya Pradesh</span>
+                    <span className="contact-item-label">Location &amp; Mobility</span>
+                    <span className="contact-item-value">Indore, India</span>
                   </div>
                 </div>
                 <div className="contact-item-actions">
-                  <span className="contact-status-tag">Open to Relocate</span>
+                  <span className="contact-status-tag">Relocate Across India</span>
                 </div>
               </div>
             </div>
@@ -993,13 +1094,20 @@ function App() {
                 Say Hello 👋
               </button>
               <a
-                href="/Ahad_Ahmed_Choudhary_Resume.pdf"
-                download="Ahad_Ahmed_Choudhary_Resume.pdf"
+                href="/Ahad_Ahmed_Choudhary_Data_Analyst_Resume.pdf"
+                download="Ahad_Ahmed_Choudhary_Data_Analyst_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn--secondary btn--lg"
               >
-                Download Resume 📥
+                Download PDF 📥
+              </a>
+              <a
+                href="/Ahad_Ahmed_Choudhary_Data_Analyst_Resume.doc"
+                download="Ahad_Ahmed_Choudhary_Data_Analyst_Resume.doc"
+                className="btn btn--outline btn--lg"
+              >
+                Download .DOC 📄
               </a>
             </div>
           </div>
@@ -1079,6 +1187,36 @@ function App() {
                 <div className="method-info">
                   <strong>Chat on WhatsApp</strong>
                   <span>+91 6264382228</span>
+                </div>
+                <span className="method-arrow">→</span>
+              </a>
+
+              {/* Option 5: LinkedIn */}
+              <a
+                href="https://linkedin.com/in/ahad-ahmed-choudhary-738b3135a"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="modal-method-btn modal-method-btn--linkedin"
+              >
+                <span className="method-icon">🔗</span>
+                <div className="method-info">
+                  <strong>Connect on LinkedIn</strong>
+                  <span>ahad-ahmed-choudhary</span>
+                </div>
+                <span className="method-arrow">→</span>
+              </a>
+
+              {/* Option 6: GitHub */}
+              <a
+                href="https://github.com/ahadahmed123456789"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="modal-method-btn modal-method-btn--github"
+              >
+                <span className="method-icon">💻</span>
+                <div className="method-info">
+                  <strong>Explore GitHub Projects</strong>
+                  <span>github.com/ahadahmed123456789</span>
                 </div>
                 <span className="method-arrow">→</span>
               </a>
