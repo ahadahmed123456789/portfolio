@@ -67,6 +67,8 @@ const PROJECTS = [
       'Built an ATS-compatibility checker that scores resumes against job descriptions using weighted skill matching and provides actionable gap analysis.',
     ],
     num: '01',
+    liveUrl: 'https://ai-resume-analyser-pro.ahadahmed786921.workers.dev/',
+    githubUrl: 'https://github.com/ahadahmed123456789/ai-resume-analyser-pro',
   },
   {
     title: 'Student Habits vs Academic Performance Analysis',
@@ -80,6 +82,7 @@ const PROJECTS = [
       'Cleaned and validated a 1,000-record dataset resolving missing values, duplicates, and type inconsistencies across multiple input formats with full transformation documentation.',
     ],
     num: '02',
+    githubUrl: 'https://github.com/ahadahmed123456789',
   },
   {
     title: 'Sales Data Analysis & Forecasting',
@@ -93,6 +96,7 @@ const PROJECTS = [
       'Delivered an Excel workbook with pivot summaries and VBA macro for refreshing reports, enabling non-technical stakeholders to re-cut analysis without code dependency.',
     ],
     num: '03',
+    githubUrl: 'https://github.com/ahadahmed123456789',
   },
 ]
 
@@ -819,6 +823,30 @@ function App() {
                     <li key={i}>{b}</li>
                   ))}
                 </ul>
+                <div className="project-actions" style={{ display: 'flex', gap: '10px', marginTop: '16px', flexWrap: 'wrap' }}>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn--primary"
+                      style={{ padding: '8px 16px', fontSize: '0.85rem' }}
+                    >
+                      ⚡ Live Demo
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn--secondary"
+                      style={{ padding: '8px 16px', fontSize: '0.85rem' }}
+                    >
+                      💻 GitHub Code
+                    </a>
+                  )}
+                </div>
               </div>
               <div className="project-accent" />
             </div>
